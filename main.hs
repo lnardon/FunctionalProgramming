@@ -9,7 +9,7 @@ dec2Bin dec bits
     | bits < length binRep = error "Número de bits insuficiente"
     | otherwise = replicate (bits - length binRep) 0 ++ binRep
     where
-        binRep = decParaBinHelper dec
+        binRep = dec2BinHelper dec
 
 -- Aux Func
 dec2BinHelper :: Int -> [Int]
