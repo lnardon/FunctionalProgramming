@@ -52,11 +52,11 @@ xorOfBins (x:xs) (y:ys) = boolToInt (xor (intToBool x) (intToBool y)) : xorOfBin
 arrayOfOne :: Int -> [Int]
 arrayOfOne n = [1 | x <- [1..n]]
 
-bin :: [Int] -> [Int]
-bin xs = xorOfBins xs (arrayOfOne (length xs))
+invertbin :: [Int] -> [Int]
+invertbin xs = xorOfBins xs (arrayOfOne (length xs))
 
-arrayLastOne :: Int -> [Int]
-arrayLastOne n = [if x == n then 1 else 0 | x <- [1..n]]
+oneInBin :: Int -> [Int]
+oneInBin n = [if x == n then 1 else 0 | x <- [1..n]]
 
 addOfBins :: [Int] -> [Int] -> Int -> [Int]
 addOfBins [] [] 0 = []
@@ -67,7 +67,4 @@ addOfBins (x:xs) (y:ys) z | (x + y + z == 3) = z : addOfBins xs ys 1
                           | otherwise = 1 : addOfBins xs ys 0
 
 bincompl2Negative :: [Int] -> [Int]
-bincompl2Negative xs = reverse (addOfBins (reverse (bin xs)) (reverse (arrayLastOne (length xs))) 0)
-
--- preciso validar se o número é negativo ou não
--- dec2bincompl :: [Int] -> Int -> [Int]
+bincompl2Negative xs = reverse (addOfBins (reverse (invertbin xs)) (reverse (oneInBin (length xs))) 0)
