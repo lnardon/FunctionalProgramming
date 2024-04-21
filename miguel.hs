@@ -24,10 +24,6 @@ bin xs = xorOfBins xs (arrayOfOne (length xs))
 arrayLastOne :: Int -> [Int]
 arrayLastOne n = [if x == n then 1 else 0 | x <- [1..n]]
 
-reverse' :: [int] -> [int]
-reverse' [] = []
-reverse' (x:xs) = reverse xs ++ [x]
-
 addOfBins :: [Int] -> [Int] -> Int -> [Int]
 addOfBins [] [] 0 = []
 addOfBins [] [] 1 = []
@@ -37,4 +33,8 @@ addOfBins (x:xs) (y:ys) z | (x + y + z == 3) = z : addOfBins xs ys 1
                           | otherwise = 1 : addOfBins xs ys 0
 
 binCompl2Dec :: [Int] -> [Int]
-binCompl2Dec xs = reverse' (addOfBins (reverse' (bin xs)) (reverse' (arrayLastOne (length xs))) 0)
+binCompl2Dec xs = reverse (addOfBins (reverse (bin xs)) (reverse (arrayLastOne (length xs))) 0)
+
+-- dec2bincompl :: [Int] -> int -> [Int]
+---- preciso validar se o número é negativo ou não
+-- dec2bincompl xs y = if (head xs) == 1 then {funcao negativo} else {funcao positivo}
