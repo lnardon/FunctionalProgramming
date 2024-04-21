@@ -18,12 +18,12 @@ bincompl2dec xs = if (head xs) == 0 then bin2Dec xs else -bin2Dec (bincompl2Nega
 
 -- 4
 dec2bincompl :: Int -> Int -> [Int]
-dec2bincompl x y = if x < 0 then bincompl2Negative (dec2Bin (abs x) y) else dec2Bin (abs x) y 
-
+dec2bincompl dec bits = if dec < 0 then bincompl2Negative (dec2Bin (abs dec) bits) else dec2Bin (abs dec) bits 
 
 -- 5
+-- TODO: Review
 somarbin :: [Int] -> [Int] -> Int -> [Int]
-somarbin [] [] 0 = []
+somarbin xs ys z = if and [((length xs) == z), ((length ys) == z)] then addOfBins (reverse xs) (reverse ys) 0 else error "error"
 
 
 -- Aux Func
