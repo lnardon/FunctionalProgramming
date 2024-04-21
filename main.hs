@@ -23,7 +23,7 @@ dec2bincompl dec bits = if dec < 0 then bincompl2Negative (dec2Bin (abs dec) bit
 -- 5
 -- TODO: Review
 somarbin :: [Int] -> [Int] -> Int -> [Int]
-somarbin xs ys z = if and [((length xs) == z), ((length ys) == z)] then addOfBins (reverse xs) (reverse ys) 0 else error "error"
+somarbin xs ys z = if and [((length xs) == z), ((length ys) == z)] then addOfBins (reverse xs) (reverse ys) 0 else error "Número de bits insuficiente"
 
 
 -- Aux Func
